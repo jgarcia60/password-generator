@@ -54,11 +54,10 @@ function generatePassword() {
     randomGeneratorLimit = characters.length - 1;
   }
 
-// need a conditional in the for loop for a 50/50 random generator for upper case, if the random number is within the characters length 
-  // var indexOfPassword = Math.floor(Math.random() * randomGeneratorLimit);
-  // console.log(indexOfPassword);
-  for (var i = 0; i < passwordLength - 1; i++) {
+  
+  for (var i = 0; i < passwordLength; i++) {
     var indexOfPassword = Math.floor(Math.random() * randomGeneratorLimit);
+    //adding a log so I can make sure the index is working properly
     console.log(indexOfPassword);
     if (indexOfPassword < 27) {
       if (includeUpperCase && includeLowerCase) {
@@ -75,8 +74,18 @@ function generatePassword() {
       } else { //only thing remaining is if only lower case was selected
         password += characters[indexOfPassword];
       }
+      //if the random number is greater than the characters array length but less than 
+      //characters.length + numbers.length and if numbers were selected by user
+    } else if (indexOfPassword > 27 && indexOfPassword < 37 && includeNumbers) { 
+        password += numbers[indexOfPassword - characters.length];
+        //if numbers were not selected by user, then indexOfPassword > 27 will result in a special character
+    } else if (indexOfPassword > 27 && !includeNumbers) {
+        password += specialCharacters[indexOfPassword - characters.length];
+    } else {
+      password += specialCharacters[indexOfPassword - numbers.length - characters.length];
     }
   }
+  return password;
   
 
 }

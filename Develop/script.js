@@ -15,10 +15,11 @@ function generatePassword() {
   'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
   var numbers =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; 
-  var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '_', '`', '~', '<', '>', '/', ';', ':', "'", '.', '[', ']', '{', '}'];
+  var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '_', '`', '~', '<', '>', '/', '?', ';', ':', "'", '.', '[', ']', '{', '}', "\\"];
   console.log("characters length is " + characters.length);
   console.log("numbers length is " + numbers.length);
   console.log("specialCharacters length is " + specialCharacters.length);
+  console.log(specialCharacters[specialCharacters.length-1]);
  
   var validLength = false;
 
@@ -59,7 +60,7 @@ function generatePassword() {
     var indexOfPassword = Math.floor(Math.random() * randomGeneratorLimit);
     //adding a log so I can make sure the index is working properly
     console.log(indexOfPassword);
-    if (indexOfPassword < 27) {
+    if (indexOfPassword < 26) {
       if (includeUpperCase && includeLowerCase) {
         // coin flip for upper or lower case 
         var caseType = Math.floor(Math.random() * 2) + 1;
@@ -76,18 +77,16 @@ function generatePassword() {
       }
       //if the random number is greater than the characters array length but less than 
       //characters.length + numbers.length and if numbers were selected by user
-    } else if (indexOfPassword > 27 && indexOfPassword < 37 && includeNumbers) { 
+    } else if (indexOfPassword > 26 && indexOfPassword < 36 && includeNumbers) { 
         password += numbers[indexOfPassword - characters.length];
         //if numbers were not selected by user, then indexOfPassword > 27 will result in a special character
-    } else if (indexOfPassword > 27 && !includeNumbers) {
+    } else if (indexOfPassword > 26 && !includeNumbers) {
         password += specialCharacters[indexOfPassword - characters.length];
     } else {
       password += specialCharacters[indexOfPassword - numbers.length - characters.length];
     }
   }
   return password;
-  
-
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

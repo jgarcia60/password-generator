@@ -14,15 +14,14 @@ function generatePassword() {
   var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
   'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
+  //these numbers are strings because they will be concatenated to the password. We don't want to "add" the numbers.
   var numbers =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; 
-  var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '_', '`', '~', '<', '>', '/', '?', ';', ':', "'", '.', '[', ']', '{', '}', "\\"];
-  console.log("characters length is " + characters.length);
-  console.log("numbers length is " + numbers.length);
-  console.log("specialCharacters length is " + specialCharacters.length);
-  console.log(specialCharacters[specialCharacters.length-1]);
+  var specialCharacters = [' ', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '_', '`', '~', '<', '>', '/', '?', ';', ':', "'", '.', '[', ']', '{', '}', "\\"];
+  //googled how to add the backsash '\' by adding one more '/' in the string.
  
+  //initializing password length validity for while loop
   var validLength = false;
-
+  //repeating the prompt for password length until they give an acceptable response
   while (validLength !== true) {
     var passwordLength = prompt("How long do you want your password to be?");
     var passwordLength = parseInt(passwordLength);
@@ -31,7 +30,9 @@ function generatePassword() {
     } else validLength = true;
   }
 
+  //initializing choice validity for the while loop
   var validChoice = false;
+  //repeating the prompt for character types if they don't select at least one type for their password
   while (validChoice !== true) {
     var includeNumbers = confirm("Do you want your password to include numbers?");
     var includeSpecialChars = confirm("Do you want your password to include special characters?");
@@ -44,7 +45,8 @@ function generatePassword() {
 
   var password = "";
   var randomGeneratorLimit;
-
+  //setting the for loop limit based on the total amount of possible characters we have. Based on the user selections,
+  //these conditionals will select the appropriate number of possible characters.
   if (includeNumbers && includeSpecialChars && includeUpperCase || includeNumbers && includeSpecialChars) {
     randomGeneratorLimit = characters.length - 1 + numbers.length - 1 + specialCharacters.length - 1;
   } else if (includeUpperCase && includeSpecialChars || includeSpecialChars) {
@@ -60,6 +62,7 @@ function generatePassword() {
     var indexOfPassword = Math.floor(Math.random() * randomGeneratorLimit);
     //adding a log so I can make sure the index is working properly
     console.log(indexOfPassword);
+    //starting with the alphabet, starting from 0. Checking if random number is within the alphabet
     if (indexOfPassword < 26) {
       if (includeUpperCase && includeLowerCase) {
         // coin flip for upper or lower case 

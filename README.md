@@ -26,7 +26,7 @@ To install the project files, you can clone the "password-generator" repository 
 
 ## Usage 
 
-You may use this code as a template for boostrap grid containers, responsive navbars, forms, or a template for a webpage of your own. The custom CSS file or it's individual classes can be used for styling templates in other applications. 
+You may use this code as your own password generator, or as a tool to help you understand array indexing and iterative loops.
 
 This is what it looks like:
 ![screenshot](./Assets/password-generator-screenshot.png)

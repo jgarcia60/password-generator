@@ -29,7 +29,7 @@ To install the project files, you can clone the "password-generator" repository 
 You may use this code as your own password generator, or as a tool to help you understand array indexing and iterative loops.
 
 This is what it looks like:
-![screenshot](./Assets/password-generator-screenshot.png)
+![screenshot](./password-generator-screenshot.png)
 
 
 ## Credits

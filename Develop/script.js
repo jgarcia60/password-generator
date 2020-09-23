@@ -14,7 +14,7 @@ function generatePassword() {
   var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
   'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-  //these numbers are strings because they will be concatenated to the password. We don't want to "add" the numbers.
+  //these numbers are strings because they will be concatenated to the password. We don't want to mathematically "add" the numbers.
   var numbers =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; 
   var specialCharacters = [' ', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '_', '`', '~', '<', '>', '/', '?', ';', ':', "'", '.', '[', ']', '{', '}', "\\"];
   //googled how to add the backsash '\' by adding one more '/' in the string.
